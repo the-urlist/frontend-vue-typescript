@@ -1,0 +1,12 @@
+config:
+  target: 'https://linky-link.azurewebsites.net'
+  phases:
+    - duration: 60
+      arrivalRate: 20
+  defaults:
+    headers:
+      x-functions-key: 'SteUyT0o2YSt4JW8k2qZ5ShTBcQYQj1pxE8cO7oTrYI4ps92/53o9w=='
+scenarios:
+  - flow:
+    - get:
+        url: "/api/links/cog-services"

@@ -1,0 +1,30 @@
+$green: #20ae96;
+$red: #d9255e;
+
+$primary: $green;
+$danger: $red;
+
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/base/_all.sass";
+
+@import "bulma/sass/form/shared.sass";
+@import "bulma/sass/form/input-textarea.sass";
+
+/* ELEMENTS  */
+@import "bulma/sass/elements/button.sass";
+@import "bulma/sass/elements/container.sass";
+@import "bulma/sass/elements/icon.sass";
+@import "bulma/sass/elements/image.sass";
+@import "bulma/sass/elements/tag.sass";
+
+/* LAYOUT */
+@import "bulma/sass/layout/section.sass";
+@import "bulma/sass/layout/hero.sass";
+
+/* COLUMNS */
+@import "bulma/sass/grid/columns.sass";
+
+/* COMPONENTS */
+@import "bulma/sass/components/card.sass";
+@import "bulma/sass/components/modal.sass";
+@import "bulma/sass/components/navbar.sass";

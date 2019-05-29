@@ -1,58 +1,47 @@
 <template>
-  <div
-    name="delete-list"
-    width="60%"
-    :adaptive="true"
-    :max-width="500"
-    :min-width="300"
-  >
-    <div class="modal">
-      <div class="log flex flex-column">
-        <a class="is-aligned-right" href="#" @click.prevent="$emit('close')">
-          <img src="../assets/close.png" />
-        </a>
-        <div
-          class="confirmation-details flex is-horizontally-centered is-vertically-centered flex-column"
-        >
-          <h1>Delete this list?</h1>
-          <p>
-            The url
-            <span class="has-text-danger">{{ vanityUrl }}</span> will be
-            released for others to use.
-          </p>
-        </div>
-        <div class="confirmation-buttons flex is-horizontally-centered">
-          <button
-            :disabled="!canDelete"
-            class="button is-color-danger has-text-white"
-            @click="deleteList(vanityUrl)"
-          >
-            Yes, Delete It
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <modal :isActive="isActive" @close="$emit('close')">
+    <h4 class="is-size-4 has-text-weight-normal">Delete this list?</h4>
+    <br />
+    <p>
+      The url
+      <span class="has-text-danger">{{ currentList.vanityUrl }}</span> will be
+      released for others to use.
+    </p>
+    <br />
+    <button
+      :disabled="!canDelete"
+      class="button is-danger is-large is-fullwidth has-text-white"
+      @click="deleteList"
+    >
+      Yes, Delete It
+    </button>
+  </modal>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import Modal from "@/components/Modal.vue";
 
 @Component({
   props: {
-    vanityUrl: {
-      type: String
+    isActive: {
+      type: Boolean
     }
-  }
+  },
+  components: { Modal }
 })
 export default class Login extends Vue {
+  get currentList() {
+    return this.$store.getters.currentList;
+  }
+
   canDelete() {
     this.$store.getters.appIsBusy;
   }
 
   async deleteList(vanityUrl: string) {
     try {
-      await this.$store.dispatch("deleteList", vanityUrl);
+      await this.$store.dispatch("deleteList", this.currentList.vanityUrl);
       this.$emit("close");
       this.$router.push("/s/user");
     } catch (err) {

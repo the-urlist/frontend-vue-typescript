@@ -1,11 +1,5 @@
 <template>
   <ul ref="menu" class="items-list" :class="{ open: showProfileMenu }">
-    <li class="item" @click="createNewList">
-      New List<span class="iconitem fa fa-plus"></span>
-    </li>
-    <li class="item" @click="goToMyLists">
-      My Lists<span class="iconitem fa fa-user"></span>
-    </li>
     <li>
       <a :href="logoutUrl" class="item">
         Log Out<span class="iconitem fa fa-id-badge"></span>
@@ -25,24 +19,11 @@ export default class extends Vue {
   }
 
   logoutUrl = config.LOGOUT_URL;
-
-  goToMyLists() {
-    this.$router.push("/s/user");
-    this.$store.dispatch("toggleProfileMenu");
-  }
-
-  createNewList() {
-    this.$store.dispatch("resetCurrentList");
-    this.$router.push("/s/edit");
-    this.$store.dispatch("toggleProfileMenu");
-  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import "../styles/colors.scss";
-
 .items-list {
   position: absolute;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -67,7 +48,7 @@ export default class extends Vue {
 }
 
 .item:hover {
-  background: $primary-color-hover;
+  // background: $primary-color-hover;
   color: white;
 }
 

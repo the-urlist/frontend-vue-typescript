@@ -24,7 +24,9 @@ export default class List extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import "@/styles/site.scss";
+
 .progress-bar {
   height: 6px;
   position: fixed;

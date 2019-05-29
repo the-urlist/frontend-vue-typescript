@@ -1,17 +1,25 @@
 <template>
-  <div class="flex is-horizontally-centered flex-column">
-    <div class="shrug has-text-primary">
-      <span>¯\_</span>
-      <span>(ツ)</span>
-      <span>_/¯</span>
+  <div class="hero is-fullheight has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <div class="shrug has-text-primary">
+          <span>¯\_</span>
+          <span>(ツ)</span>
+          <span>_/¯</span>
+        </div>
+        <br />
+        <h3 class="is-size-5 has-text-weight-medium">
+          We couldn't find that Url List.
+        </h3>
+        <br />
+        <p class="is-size-6">
+          But that's not necessarily a bad thing. That means the url "{{
+            vanityUrl
+          }}" is
+          <a class="has-color-primary" @click="newList">still available.</a>
+        </p>
+      </div>
     </div>
-    <h3 class="shrug-description">We couldn't find that Url List.</h3>
-    <p class="shrug-description">
-      But that's not necessarily a bad thing. That means the url "{{
-        vanityUrl
-      }}" is
-      <a @click="newList">still available.</a>
-    </p>
   </div>
 </template>
 
@@ -37,7 +45,7 @@ export default class extends Vue {
 <style scoped lang="scss">
 .shrug {
   text-align: center;
-  font-size: 8vw;
+  font-size: 10vw;
   position: relative;
   line-height: 1;
   span {

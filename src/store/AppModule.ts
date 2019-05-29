@@ -2,16 +2,11 @@ import { Module, Mutation, Action, VuexModule } from "vuex-module-decorators";
 @Module
 export default class AppModule extends VuexModule {
   _appIsBusy: boolean = false;
-  _showAddBar: boolean = false;
   _appErrorMessage: string = "";
   _activeProcesses: number = 0;
 
   get appIsBusy() {
     return this._appIsBusy;
-  }
-
-  get showAddBar() {
-    return this._showAddBar;
   }
 
   get appErrorMessage() {
@@ -32,23 +27,11 @@ export default class AppModule extends VuexModule {
     this._appIsBusy = busy;
   }
 
-  @Action({ commit: "_setAppBusy" })
+  @Action
   setAppBusy(busy: boolean) {
     let incrementer = busy || -1;
-
     this.context.commit("_setActiveProcesses", incrementer);
-
-    return this._activeProcesses > 0;
-  }
-
-  @Mutation
-  _setShowAddBar(show: boolean) {
-    this._showAddBar = show;
-  }
-
-  @Action({ commit: "_setShowAddBar" })
-  setShowAddBar(show: boolean) {
-    return show;
+    this.context.commit("_setAppBusy", this._activeProcesses > 0);
   }
 
   @Mutation

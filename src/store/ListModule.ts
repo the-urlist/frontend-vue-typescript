@@ -104,7 +104,7 @@ export default class ListModule extends VuexModule {
   }
 
   @Action
-  resetCurrentList() {
+  async resetCurrentList() {
     this.context.commit("_resetCurrentList");
   }
 

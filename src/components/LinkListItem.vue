@@ -1,69 +1,90 @@
 <template>
   <div class="link-outer">
     <div class="link-wrapper">
-      <div class="flex is-vertically-centered full-width">
-        <div class="card link flex">
-          <div class="flex full-width">
-            <div class="flex is-vertically-centered">
-              <figure class="link-image is-hidden-mobile">
-                <img
-                  width="64"
-                  :src="link.image || '/images/no-image.png'"
-                  :alt="link.title"
-                />
-              </figure>
-            </div>
-            <div class="link-details flex flex-column fill-width">
-              <div class="flex">
-                <figure class="link-image is-visible-mobile">
+      <div class="columns is-vcentered is-mobile">
+        <div class="column is-narrow" v-if="editable">
+          <span class="icon is-medium has-text-grey link-drag-handle">
+            <i class="fas fa-lg fa-grip-vertical"></i>
+          </span>
+        </div>
+        <div class="card link">
+          <div class="column">
+            <div class="columns is-vcentered">
+              <div class="column is-narrow is-hidden-mobile">
+                <figure class="link-image">
                   <img
-                    width="24"
+                    width="64"
+                    height="64"
+                    class="is-64x64"
                     :src="link.image || '/images/no-image.png'"
                     :alt="link.title"
                   />
                 </figure>
-                <div class="link-title">
-                  <input
-                    type="text"
-                    :placeholder="editable ? 'Enter a title' : ''"
-                    id="linkTitle"
-                    class="input"
-                    v-model="link.title"
-                    v-blur-on-enter-key
-                  />
-                </div>
               </div>
-              <div class="link-description">
-                <textarea
-                  :placeholder="editable ? 'Enter a description' : ''"
-                  id="linkDescription"
-                  class="textarea"
-                  v-model="link.description"
-                  v-blur-on-enter-key
-                ></textarea>
-              </div>
-              <div>
-                <div class="link-url">
-                  <p>{{ link.url }}</p>
+              <div class="column link-details">
+                <div class="columns is-mobile is-multiline is-gapless">
+                  <div class="column is-narrow is-hidden-tablet">
+                    <figure class="link-image link-image-little">
+                      <img
+                        width="24"
+                        height="24"
+                        class="is-24x24"
+                        :src="link.image || '/images/no-image.png'"
+                        :alt="link.title"
+                      />
+                    </figure>
+                  </div>
+                  <div class="column">
+                    <input
+                      type="text"
+                      :placeholder="editable ? 'Enter a title' : ''"
+                      class="has-text-weight-bold link-title input has-text-weight-medium"
+                      v-model="link.title"
+                      v-blur-on-enter-key
+                    />
+                  </div>
+                  <div class="column is-full">
+                    <textarea
+                      :placeholder="editable ? 'Enter a description' : ''"
+                      class="link-description textarea has-fixed-size is-size-7"
+                      v-model="link.description"
+                      v-blur-on-enter-key
+                    ></textarea>
+                    <input
+                      disabled="disabled"
+                      v-model="link.url"
+                      class="link-url"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-            <!-- <div class="full-width"></div> -->
           </div>
+          <div class="is-overlay" v-if="!editable" @click="go(link.url)"></div>
         </div>
-        <div class="is-aligned-right delete" v-show="editable">
-          <a class="has-text-bold" @click.prevent="deleteLink(link.id)">
-            <img src="@/assets/close.png" alt />
-          </a>
+        <div class="column is-narrow" v-if="editable">
+          <div class="columns is-vcentered">
+            <div class="column">
+              <a
+                class="has-text-bold link-delete has-text-grey"
+                @click.prevent="deleteLink(link.id)"
+              >
+                <span class="icon is-medium">
+                  <i class="fas fa-lg fa-times"></i>
+                </span>
+                <!-- <img src="@/assets/close.png" alt /> -->
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="link-overlay" v-if="!editable" @click="go(link.url)"></div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import Vue from "vue";
+import Component from "vue-class-component";
 import Link from "@/models/Link";
 
 @Component({
@@ -99,16 +120,8 @@ export default class extends Vue {
 }
 
 .link-wrapper {
-  left: 20px;
-  right: 20px;
-  position: absolute;
-}
-
-.link-overlay {
-  height: 130px;
-  width: 100%;
-  cursor: pointer;
-  position: absolute;
+  margin: 10px -40px auto -40px;
+  transition: margin 400ms linear;
 }
 
 .link {
@@ -116,101 +129,73 @@ export default class extends Vue {
   height: 110px;
   cursor: pointer;
   padding-left: 10px;
+  .textarea,
   .input {
-    font-size: 1em;
-    padding: 0;
-    line-height: inherit;
+    padding: 0px 4px 0px 4px;
+    line-height: auto;
     height: auto;
+    min-height: auto;
     border: none;
+    box-shadow: none;
     overflow: hidden;
     text-overflow: ellipsis;
+    &:hover {
+      box-shadow: inset 1px 0px 2px #20ae96;
+    }
   }
-  .textarea {
-    padding: 0px 0px 0px 2px;
-    margin: 0px;
-    border: none;
-    line-height: inherit;
-    font-size: 1em;
-    height: auto;
-    width: 100%;
-    box-sizing: border-box;
-    resize: none;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .link-image {
+    padding-right: -14px;
+    &.link-image-little {
+      margin-left: 4px;
+      margin-right: 4px;
+    }
   }
-}
-
-.link-image {
-  margin: 0px 10px 0px 0px;
-  padding: 0;
-}
-
-.link-details {
-  flex: 1;
-  margin-right: 20px;
-  padding: 10px;
-}
-
-.link-title {
-  display: block;
-  color: #222c38;
-  max-lines: 2;
-  border: none;
-  font-size: 1em;
-  resize: none;
-  box-sizing: border-box;
-  width: 100%;
-  &:focus {
-    border-bottom: 1 solid $primary-color;
+  .link-details {
+    height: 110px;
+    margin-right: 10px;
   }
-}
-
-.link-description {
-  font-size: 0.8em;
-  margin-top: 4px;
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.link-url {
-  position: relative;
-  width: 100%;
-  margin-left: 2px;
-  margin-top: 4px;
-  font-size: 12px;
-  p {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 100%;
-    position: absolute;
-  }
-}
-
-.delete {
-  cursor: pointer;
-  margin-top: -20px;
-  margin-left: 20px;
-  transition: margin 400ms linear;
-}
-
-@media only screen and (min-width: 1040px) {
-  .delete {
-    margin-right: -40px;
-  }
-}
-
-@media only screen and (max-width: 680px) {
   .link-description {
+    font-size: 1em;
+    height: 40px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .link-url {
+    margin-left: 4px;
     font-size: 12px;
+    border: none;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &:disabled {
+      background-color: white;
+      color: black;
+    }
   }
-  .link-title {
-    margin-right: 30px;
+  .link-delete {
+    cursor: pointer;
+    margin-top: -20px;
+    margin-left: 20px;
+    transition: margin 400ms linear;
   }
-  .link .textarea {
-    padding: 0;
-    margin: 0;
+  .link-overlay {
+    height: 110px;
+    width: 100%;
+    cursor: pointer;
+    position: absolute;
+    margin-top: -110px;
+  }
+}
+
+.link-drag-handle {
+  cursor: move;
+}
+
+@media only screen and (max-width: 1090px) {
+  .link-wrapper {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 </style>

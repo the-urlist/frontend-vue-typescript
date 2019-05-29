@@ -11,9 +11,12 @@ Vue.directive("blur-on-enter-key", blurOnEnterKey);
 import ApiService from "@/services/api.service";
 ApiService.init();
 
-// Use Modal and 
-import VModal from "vue-js-modal";
-Vue.use(VModal, { dynamic: true, injectModalsContainer: true });
+// Use Vue plugins
+// import VModal from "vue-js-modal";
+// Vue.use(VModal, { dynamic: true, injectModalsContainer: true });
+
+const VTooltip = require("v-tooltip");
+Vue.use(VTooltip);
 
 // The base JavaScript array type is overriden to provide for easier retrieval of
 // members by their id.

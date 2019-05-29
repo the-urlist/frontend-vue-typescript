@@ -2,14 +2,19 @@
   <div class="container">
     <div class="section">
       <div v-if="!notFound">
-        <h2 class="has-text-primary">{{ currentList.description }}</h2>
+        <h2
+          class="is-size-3 is-heading has-text-weight-medium has-text-primary"
+        >
+          {{ currentList.description }}
+        </h2>
         <link-list :links="currentList.links" :editable="false"></link-list>
       </div>
-      <div
-        class="flex is-horizontally-centered is-vertically-centered"
-        v-if="vanityUrl.length > 0"
-      >
-        <not-found v-if="notFound" :vanityUrl="vanityUrl"></not-found>
+      <div v-if="vanityUrl.length > 0">
+        <not-found
+          id="notFound"
+          v-if="notFound"
+          :vanityUrl="vanityUrl"
+        ></not-found>
       </div>
     </div>
   </div>
@@ -52,3 +57,10 @@ export default class List extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+#notFound {
+  margin-top: -100px;
+}
+</style>
+

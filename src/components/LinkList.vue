@@ -1,5 +1,5 @@
 <template>
-  <div class="links">
+  <div>
     <sortable-list
       v-model="currentList.links"
       :distance="10"

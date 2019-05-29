@@ -1,43 +1,112 @@
 <template>
-  <header class="navbar">
-    <ul class="big-container navbar-content flex is-vertically-centered">
-      <li>
-        <a href="/">
-          <img width="100" src="@/assets/logo-beta.svg" />
+  <header id="navbar" class="header">
+    <nav
+      class="navbar container"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img
+            width="100"
+            height="60"
+            src="@/assets/logo-beta.svg"
+            alt="urlist logo"
+          />
         </a>
-      </li>
-      <li class="is-aligned-right">
-        <div class="dropdown">
-          <a
-            class="login flex is-vertically-centered"
-            href="#"
-            @click.prevent="profileLoginClick()"
-          >
-            <img
-              class="profile-image"
-              :src="
-                currentUser.loggedIn
-                  ? currentUser.profileImage
-                  : '/images/login.png'
-              "
-              alt
-            />
-            <span class="login is-hidden-mobile">{{ currentUser.name }}</span>
+        <a
+          id="hamburger"
+          role="button"
+          class="beta-bump navbar-burger burger"
+          :class="{ 'is-active': showMenu }"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+          @click="showMenu = !showMenu"
+        >
+          <img
+            src="@/assets/burger.svg"
+            alt="toggle menu"
+            width="60"
+            height="60"
+          />
+        </a>
+      </div>
+      <div class="beta-bump navbar-menu" :class="{ 'is-active': showMenu }">
+        <div class="navbar-start">
+          <a class="navbar-item" @click.prevent="newList()">
+            <span class="icon is-large navbar-icon">
+              <i class="fas fa-lg fa-plus-circle"></i>
+            </span>
+            New
           </a>
-          <user-menu></user-menu>
+          <router-link
+            v-if="currentUser.loggedIn"
+            class="navbar-item"
+            to="/s/user"
+          >
+            <span class="icon is-large  navbar-icon">
+              <i class="fas fa-lg fa-user-circle"></i>
+            </span>
+            My Lists
+          </router-link>
+          <a href="https://aka.ms/theurlist" class="navbar-item" target="_new">
+            <span class="icon is-large  navbar-icon">
+              <i class="fas fa-lg fa-question-circle"></i>
+            </span>
+            About
+          </a>
         </div>
-      </li>
-    </ul>
-    <nav-bar-list-details
-      v-show="showListDetails"
-      style="display: none"
-    ></nav-bar-list-details>
+
+        <div class="navbar-end">
+          <a
+            v-if="!currentUser.loggedIn"
+            class="navbar-item"
+            @click.prevent="showLoginModal = true"
+          >
+            <span>Log in</span>
+          </a>
+          <div
+            class="navbar-item has-dropdown is-hoverable"
+            v-if="currentUser.loggedIn"
+          >
+            <a class="navbar-link">
+              <div class="columns is-gapless is-mobile  ">
+                <div class="column is-narrow">
+                  <figure id="profileImage" class="image">
+                    <img
+                      class="is-rounded"
+                      :src="currentUser.profileImage"
+                      alt
+                    />
+                  </figure>
+                </div>
+                <div class="column">
+                  <span>{{ currentUser.name }}</span>
+                </div>
+              </div>
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" :href="logoutUrl">
+                <span class="icon is-medium navbar-icon">
+                  <i class="fas fa-sign-out-alt"></i>
+                </span>
+                Log Out
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <modal-login
+      :isActive="showLoginModal"
+      @close="showLoginModal = false"
+    ></modal-login>
   </header>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import NavBarListDetails from "@/components/NavBarListDetails.vue";
 import ProgressBar from "@/components/ProgressBar.vue";
 import ModalLogin from "@/components/ModalLogin.vue";
 import UserMenu from "@/components/UserMenu.vue";
@@ -46,36 +115,23 @@ import config from "@/config";
 
 @Component({
   components: {
-    NavBarListDetails,
     ProgressBar,
-    UserMenu
+    UserMenu,
+    ModalLogin
   }
 })
 export default class extends Vue {
+  showMenu: boolean = false;
+  showLoginModal: boolean = false;
+  logoutUrl = config.LOGOUT_URL;
+
   get currentUser(): User {
     return this.$store.getters.currentUser;
   }
 
-  get showListDetails() {
-    // the list details is only shown on the "edit" screen
-    return this.$route.path === "/s/edit";
-  }
-
-  profileLoginClick() {
-    if (this.currentUser.loggedIn) {
-      this.$store.dispatch("toggleProfileMenu");
-    } else {
-      this.$modal.show(
-        ModalLogin,
-        {},
-        {
-          width: "60%",
-          adaptive: true,
-          minWidth: 300,
-          maxWidth: 500
-        }
-      );
-    }
+  newList() {
+    this.$store.dispatch("resetCurrentList");
+    this.$router.push("/s/edit");
   }
 
   async created() {
@@ -91,33 +147,43 @@ export default class extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.dropdown {
-  position: relative;
+.beta-bump {
+  margin-top: 20px;
 }
 
-.navbar {
+#navbar {
   top: 0;
   width: 100%;
-  background: white;
-  box-shadow: 0px 5px 40px 1px #e8e8e8;
+  background: #fff;
+  box-shadow: 0 5px 40px 1px #e8e8e8;
+  padding-bottom: 20px;
 }
 
-.navbar-content {
-  li {
-    list-style: none;
+a.navbar-item {
+  color: #71777e;
+  img {
+    max-height: inherit;
   }
-  a {
-    text-decoration: none;
-    color: #71777e;
+  &:hover,
+  &:focus,
+  &:focus-within {
+    background-color: inherit;
+    color: inherit;
   }
 }
 
-.profile-image {
-  border-radius: 50%;
-  margin-right: 10px;
+.navbar-menu {
+  margin-left: 20px;
+  border: none;
+  box-shadow: none;
 }
 
-.login {
+#profileImage {
   margin-left: 5px;
+  margin-right: 10px;
+  > img {
+    width: 28px;
+    height: 28px;
+  }
 }
 </style>

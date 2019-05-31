@@ -3,6 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store/store";
 
+// import styles
+import "@/styles/site.scss";
+
 // directives
 import blurOnEnterKey from "@/directives/blurOnEnterKey";
 Vue.directive("blur-on-enter-key", blurOnEnterKey);
@@ -10,13 +13,6 @@ Vue.directive("blur-on-enter-key", blurOnEnterKey);
 // Initialize API which has some global settings which will be kept in memory
 import ApiService from "@/services/api.service";
 ApiService.init();
-
-// Use Vue plugins
-// import VModal from "vue-js-modal";
-// Vue.use(VModal, { dynamic: true, injectModalsContainer: true });
-
-const VTooltip = require("v-tooltip");
-Vue.use(VTooltip);
 
 // The base JavaScript array type is overriden to provide for easier retrieval of
 // members by their id.

@@ -4,7 +4,7 @@
       <progress-bar></progress-bar>
     </div>
     <nav-bar></nav-bar>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
@@ -24,9 +24,7 @@ export default class List extends Vue {
 }
 </script>
 
-<style lang="scss">
-@import "@/styles/site.scss";
-
+<style scoped lang="scss">
 .progress-bar {
   height: 6px;
   position: fixed;

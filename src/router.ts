@@ -4,8 +4,6 @@ import Home from "@/views/Home.vue";
 import List from "@/views/List.vue";
 import User from "@/views/User.vue";
 import Edit from "@/views/Edit.vue";
-import New from "@/views/New.vue";
-import store from "@/store/store";
 
 Vue.use(Router);
 

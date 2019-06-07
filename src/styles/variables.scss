@@ -1,0 +1,9 @@
+$green: #20ae96;
+$red: #d9255e;
+
+$primary: $green;
+$danger: $red;
+
+@import "bulma/sass/utilities/initial-variables.sass";
+@import "bulma/sass/utilities/functions.sass";
+@import "bulma/sass/utilities/derived-variables.sass";

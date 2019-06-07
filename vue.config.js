@@ -1,4 +1,11 @@
 module.exports = {
+  css: {
+    loaderOptions: {
+      sass: {
+        data: `@import "@/styles/variables.scss";`
+      }
+    }
+  },
   configureWebpack: config => {
     if (process.env.NODE_ENV === "development") {
       config.devtool = "eval-source-map";

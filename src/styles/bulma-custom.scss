@@ -1,12 +1,14 @@
-$green: #20ae96;
-$red: #d9255e;
+@import "./variables.scss";
 
-$primary: $green;
-$danger: $red;
+/* UTILTIES */
+@import "bulma/sass/utilities/animations.sass";
+@import "bulma/sass/utilities/controls.sass";
+@import "bulma/sass/utilities/mixins.sass";
 
-@import "bulma/sass/utilities/_all.sass";
+/* BASE */
 @import "bulma/sass/base/_all.sass";
 
+/* FORM */
 @import "bulma/sass/form/shared.sass";
 @import "bulma/sass/form/input-textarea.sass";
 

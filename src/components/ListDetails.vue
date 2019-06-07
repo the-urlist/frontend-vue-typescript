@@ -6,16 +6,6 @@
           <div class="column">
             <label class="control-label" for="vanityUrl">Link Title</label>
             <input
-              title="Optional: Enter a name for this list. The name will become the URL (i.e. my-list becomes theurlist.com/my-list). If you leave this box blank, we'll generate a random name for you."
-              class="input is-large has-tooltip"
-              :class="{ 'is-invalid': $v.vanityUrl.$error }"
-              id="vanityUrl"
-              ref="vanityUrl"
-              type="text"
-              @input="setvanityUrl($event.target.value)"
-              v-show="!listIsPublished"
-            />
-            <input
               class="input is-large"
               id="vanityUrl"
               ref="vanityUrl"
@@ -23,6 +13,16 @@
               disabled="disabled"
               v-model="currentList.vanityUrl"
               v-if="listIsPublished"
+            />
+            <input
+              title="Optional: Enter a name for this list. The name will become the URL (i.e. my-list becomes theurlist.com/my-list). If you leave this box blank, we'll generate a random name for you."
+              class="input is-large has-tooltip"
+              :class="{ 'is-invalid': $v.vanityUrl.$error }"
+              id="vanityUrl"
+              ref="vanityUrl"
+              type="text"
+              @input="setvanityUrl($event.target.value)"
+              v-else
             />
             <div id="errorMessage">
               <p

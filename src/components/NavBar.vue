@@ -1,9 +1,18 @@
 <template>
   <header id="navbar" class="header">
-    <nav class="navbar container" role="navigation" aria-label="main navigation">
+    <nav
+      class="navbar container"
+      role="navigation"
+      aria-label="main navigation"
+    >
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
-          <img width="100" height="60" src="@/assets/logo-beta.svg" alt="urlist logo">
+          <img
+            width="100"
+            height="60"
+            src="@/assets/logo-beta.svg"
+            alt="urlist logo"
+          />
         </a>
         <a
           id="hamburger"
@@ -15,7 +24,12 @@
           data-target="navbarBasicExample"
           @click="showMenu = !showMenu"
         >
-          <img src="@/assets/burger.svg" alt="toggle menu" width="60" height="60">
+          <img
+            src="@/assets/burger.svg"
+            alt="toggle menu"
+            width="60"
+            height="60"
+          />
         </a>
       </div>
       <div class="beta-bump navbar-menu" :class="{ 'is-active': showMenu }">
@@ -26,7 +40,11 @@
             </span>
             New
           </a>
-          <router-link v-if="currentUser.loggedIn" class="navbar-item" to="/s/user">
+          <router-link
+            v-if="currentUser.loggedIn"
+            class="navbar-item"
+            to="/s/user"
+          >
             <span class="icon is-large navbar-icon">
               <i class="fas fa-lg fa-user-circle"></i>
             </span>
@@ -41,22 +59,19 @@
         </div>
 
         <div class="navbar-end">
-          <a
-            v-if="!currentUser.loggedIn"
-            class="navbar-item"
-            @click.prevent="showLoginModal = true"
+          <div
+            class="navbar-item has-dropdown is-hoverable"
+            v-if="currentUser.loggedIn"
           >
-            <span class="icon is-large navbar-icon">
-              <i class="fas fa-lg fa-sign-in-alt"></i>
-            </span>
-            Login
-          </a>
-          <div class="navbar-item has-dropdown is-hoverable" v-if="currentUser.loggedIn">
             <a class="navbar-link">
               <div class="columns is-gapless is-mobile">
                 <div class="column is-narrow">
                   <figure id="profileImage" class="image">
-                    <img class="is-rounded" :src="currentUser.profileImage" alt>
+                    <img
+                      class="is-rounded"
+                      :src="currentUser.profileImage"
+                      alt
+                    />
                   </figure>
                 </div>
                 <div class="column">
@@ -73,10 +88,19 @@
               </a>
             </div>
           </div>
+          <a v-else class="navbar-item" @click.prevent="showLoginModal = true">
+            <span class="icon is-large navbar-icon">
+              <i class="fas fa-lg fa-sign-in-alt"></i>
+            </span>
+            Login
+          </a>
         </div>
       </div>
     </nav>
-    <modal-login :isActive="showLoginModal" @close="showLoginModal = false"></modal-login>
+    <modal-login
+      :isActive="showLoginModal"
+      @close="showLoginModal = false"
+    ></modal-login>
   </header>
 </template>
 

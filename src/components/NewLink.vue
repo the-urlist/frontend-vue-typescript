@@ -10,8 +10,10 @@
       v-model="newLink"
       placeholder="http://example.com"
       @keyup.enter="addLink()"
-    >
-    <p v-show="isUrlInvalid" class="error">That doesn't look like a valid URL</p>
+    />
+    <p v-show="isUrlInvalid" class="error">
+      That doesn't look like a valid URL
+    </p>
   </div>
 </template>
 

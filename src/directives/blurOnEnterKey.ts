@@ -7,9 +7,9 @@ const blurOnEnterKey = {
         if (ev.which === 13) {
           el.blur();
         }
-      }
+      };
     }
   }
-}
+};
 
 export default blurOnEnterKey;

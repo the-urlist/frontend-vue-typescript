@@ -30,8 +30,7 @@ npm install
 ```bash
 npm run serve
 ```
-
-![localhost serve](docs/localhost_serve.png)
+![localhost serve](/docs/localhost_serve.png
 
 ### Create production build
 
@@ -45,3 +44,16 @@ npm run build
 ```bash
 npm run lint
 ```
+### Running locally vs running on Azure 
+The code is optimised to be run in a local environment. If either the frontend or backend are run on Azure, there is one line of code that needs to be changed:
+In \frontend\src\services\api.service.ts change line 19 from 
+
+```bash
+axios.defaults.withCredentials = false;
+```
+to
+
+```bash
+axios.defaults.withCredentials = true;
+```
+This should keep you out of CORS troubles

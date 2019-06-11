@@ -8,11 +8,10 @@
       type="text"
       id="newLink"
       v-model="newLink"
+      placeholder="http://example.com"
       @keyup.enter="addLink()"
-    />
-    <p v-show="isUrlInvalid" class="error">
-      That doesn't look like a valid URL
-    </p>
+    >
+    <p v-show="isUrlInvalid" class="error">That doesn't look like a valid URL</p>
   </div>
 </template>
 
@@ -24,7 +23,7 @@ import { required, url, helpers } from "vuelidate/lib/validators";
 /* eslint-disable */
 const customURL = helpers.regex(
   "customURL",
-  /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/
+  /^(http(s)?:\/\/)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}(:[0-9]*)*\b([-a-zA-Z0-9@:%_\(\)\+.~#?&//=]*)$/
 );
 /* eslint-enable */
 

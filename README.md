@@ -30,7 +30,7 @@ npm install
 ```bash
 npm run serve
 ```
-![localhost serve](/docs/localhost_serve.png
+![localhost serve](/docs/localhost_serve.png)
 
 ### Create production build
 

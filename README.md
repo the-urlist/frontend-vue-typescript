@@ -1,4 +1,6 @@
 # The Urlist - Frontend
+[![Build status](https://burkeknowswords.visualstudio.com/The%20Urlist/_apis/build/status/Frontend%20Build)](https://burkeknowswords.visualstudio.com/The%20Urlist/_build/latest?definitionId=7)
+
 The frontend for this project was build with the following libraries and frameworks:
 * [TypeScript](https://www.typescriptlang.org/)
 * [Vue.js](https://github.com/vuejs/vue) / [Vue CLI](https://github.com/vuejs/vue-cli)
@@ -30,7 +32,7 @@ npm install
 ```bash
 npm run serve
 ```
-![localhost serve](/docs/localhost_serve.png
+![localhost serve](/docs/localhost_serve.png)
 
 ### Create production build
 

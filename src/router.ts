@@ -18,6 +18,8 @@ let router = new Router({
       beforeEnter: (to, from, next) => {
         if (to.query.list) {
           next({ path: `/${to.query.list}` });
+        } else {
+          next();
         }
       }
     },

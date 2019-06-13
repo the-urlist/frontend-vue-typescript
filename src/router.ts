@@ -14,7 +14,12 @@ let router = new Router({
     {
       path: "/",
       name: "home",
-      component: Home
+      component: Home,
+      beforeEnter: (to, from, next) => {
+        if (to.query.list) {
+          next({ path: `/${to.query.list}` });
+        }
+      }
     },
     {
       path: "/s/user",

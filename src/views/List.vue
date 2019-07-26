@@ -6,7 +6,11 @@
           class="is-size-3 is-heading has-text-weight-medium has-text-primary"
         >
           {{ currentList.description }}
-          <div id="share" class="buttons has-addons">
+          <div
+            id="share"
+            v-if="currentList.links.length > 0"
+            class="buttons has-addons"
+          >
             <a
               class="button"
               target="_blank"

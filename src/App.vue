@@ -4,7 +4,7 @@
       <progress-bar></progress-bar>
     </div>
     <nav-bar></nav-bar>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 

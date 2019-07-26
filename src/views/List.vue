@@ -6,7 +6,34 @@
           class="is-size-3 is-heading has-text-weight-medium has-text-primary"
         >
           {{ currentList.description }}
+          <div id="share" class="buttons has-addons">
+            <a
+              class="button"
+              target="_blank"
+              :href="
+                `https://twitter.com/intent/tweet?text=${currentList.description} theurlist.com/${currentList.vanityUrl}`
+              "
+              ><span class="icon"><i class="fab fa-twitter"></i></span
+            ></a>
+            <a
+              class="button"
+              target="_blank"
+              :href="
+                `https://www.facebook.com/sharer/sharer.php?u=theurlist.com/${currentList.vanityUrl}`
+              "
+              ><span class="icon"><i class="fab fa-facebook-f"></i></span
+            ></a>
+            <a
+              class="button"
+              target="_blank"
+              :href="
+                `https://www.linkedin.com/shareArticle?mini=true?summaary=${currentList.description}&url=https://theurlist.com?${currentList.vanityUrl}`
+              "
+              ><span class="icon"><i class="fab fa-linkedin-in"></i></span
+            ></a>
+          </div>
         </h2>
+        <br />
         <link-list :links="currentList.links" :editable="false"></link-list>
       </div>
       <div v-if="vanityUrl.length > 0">
@@ -63,4 +90,3 @@ export default class List extends Vue {
   margin-top: -100px;
 }
 </style>
-

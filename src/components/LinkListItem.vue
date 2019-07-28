@@ -1,6 +1,6 @@
 <template>
   <div class="link-outer">
-    <div class="link-wrapper">
+    <div class="link-wrapper" :class="{ 'link-editable': editable }">
       <div class="columns is-vcentered is-mobile">
         <div class="column is-narrow" v-if="editable">
           <span class="icon is-medium has-text-grey link-drag-handle">
@@ -119,9 +119,16 @@ export default class extends Vue {
   height: 130px;
 }
 
-.link-wrapper {
+// this class bumps the drag handle and delete button to the outer margin
+// it is only applied when a list is in edit mode
+.link-editable {
   margin: 10px -40px auto -40px;
+}
+
+.link-wrapper {
   transition: margin 400ms linear;
+  margin-top: 10px;
+  margin-bottom: auto;
 }
 
 .link {

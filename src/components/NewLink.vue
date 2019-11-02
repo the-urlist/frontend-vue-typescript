@@ -3,7 +3,7 @@
     <p>Enter a link and press enter</p>
     <input
       class="input is-large is-size-2"
-      :class="{ invalid: isUrlInvalid }"
+      :class="{ 'is-invalid': isUrlInvalid }"
       ref="newLink"
       type="text"
       id="newLink"
@@ -11,9 +11,11 @@
       placeholder="http://example.com"
       @keyup.enter="addLink()"
     />
-    <p v-show="isUrlInvalid" class="error">
-      That doesn't look like a valid URL
-    </p>
+    <div v-show="isUrlInvalid" class="errorMessage">
+      <p class="has-text-danger is-font-weight-medium">
+        That doesn't look like a valid URL
+      </p>
+    </div>
   </div>
 </template>
 
@@ -43,12 +45,12 @@ export default class extends Vue {
   newLink: string = "";
 
   addLink() {
-    if (!this.$v.$invalid) {
+    if (this.$v.$invalid) {
+      this.isUrlInvalid = true;
+    } else {
       this.isUrlInvalid = false;
       this.$emit("onAddNewLink", this.newLink);
       this.newLink = "";
-    } else {
-      this.isUrlInvalid = true;
     }
   }
 }

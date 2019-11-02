@@ -175,11 +175,6 @@ export default class AddBar extends Vue {
   font-weight: 500;
 }
 
-#errorMessage {
-  height: 10px;
-  margin-top: 5px;
-}
-
 #publishButton {
   margin-top: 1.2em;
 }

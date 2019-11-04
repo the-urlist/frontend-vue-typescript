@@ -9,7 +9,7 @@
                 <span class="has-text-primary">Group</span> links,
                 <span class="has-text-primary">Save</span> &
                 <span class="has-text-primary">Share</span> them with the
-                world!!!
+                world!
               </h1>
               <br />
               <p>

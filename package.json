@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.18.1",
     "cuid": "^2.1.6",
+    "qrcode.vue": "^1.7.0",
     "typescript-debounce-decorator": "0.0.17",
     "v-tooltip": "^2.0.2",
     "vue": "^2.6.10",

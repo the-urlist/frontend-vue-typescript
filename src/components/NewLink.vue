@@ -27,7 +27,7 @@ import { required, url, helpers } from "vuelidate/lib/validators";
 /* eslint-disable */
 const customURL = helpers.regex(
   "customURL",
-  /^(http(s)?:\/\/)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}(:[0-9]*)*\b([-a-zA-Z0-9@:%_\(\)\+.~#?&//=]*)$/
+  /^(http(s)?:\/\/)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,18}(:[0-9]*)*\b([-a-zA-Z0-9@:%_\(\)\+.~#?&//=]*)$/
 );
 /* eslint-enable */
 

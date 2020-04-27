@@ -18,7 +18,9 @@
                 class="button"
                 target="_blank"
                 :href="
-                  `https://twitter.com/intent/tweet?text=${currentList.description} theurlist.com/${currentList.vanityUrl}`
+                  `https://twitter.com/intent/tweet?text=${
+                    currentList.description
+                  } theurlist.com/${currentList.vanityUrl}`
                 "
               >
                 <span class="icon"><i class="fab fa-twitter"></i></span>
@@ -27,7 +29,9 @@
                 class="button"
                 target="_blank"
                 :href="
-                  `https://www.facebook.com/sharer/sharer.php?u=theurlist.com/${currentList.vanityUrl}`
+                  `https://www.facebook.com/sharer/sharer.php?u=theurlist.com/${
+                    currentList.vanityUrl
+                  }`
                 "
               >
                 <span class="icon"><i class="fab fa-facebook-f"></i></span>
@@ -36,7 +40,9 @@
                 class="button"
                 target="_blank"
                 :href="
-                  `https://www.linkedin.com/shareArticle?mini=true?summary=${currentList.description}&url=https://theurlist.com?${currentList.vanityUrl}`
+                  `https://www.linkedin.com/shareArticle?mini=true?summary=${
+                    currentList.description
+                  }&url=https://theurlist.com?${currentList.vanityUrl}`
                 "
               >
                 <span class="icon"><i class="fab fa-linkedin-in"></i></span>

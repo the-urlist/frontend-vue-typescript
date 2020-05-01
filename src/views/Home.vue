@@ -11,6 +11,7 @@
                 <span class="has-text-primary">Share</span> them with the world
               </h1>
               <br />
+              // TODO: #27 @sana-ajani Add site description
               <p>
                 Add links to a list and share it with one simple URL.
               </p>
@@ -49,8 +50,8 @@ import NewLink from "@/components/NewLink.vue";
 
 @Component({
   components: {
-    NewLink,
-  },
+    NewLink
+  }
 })
 export default class Home extends Vue {
   // event emitted by the AddBar component

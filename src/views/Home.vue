@@ -10,7 +10,15 @@
                 <span class="has-text-primary">Save</span> &
                 <span class="has-text-primary">Share</span> them with the world
               </h1>
-              // TODO: #21 @sana-ajani Add a description here
+              <br />
+              <p>
+                Add links to a list and share it with one simple URL
+              </p>
+              <br />
+              <p>
+                Create a list anonymously, or login to save, manage and edit
+                your lists
+              </p>
             </div>
           </div>
           <div class="column is-half is-hidden-mobile">

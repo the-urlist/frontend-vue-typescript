@@ -8,15 +8,9 @@
               <h1 class="is-size-3 has-text-weight-medium">
                 <span class="has-text-primary">Group</span> links,
                 <span class="has-text-primary">Save</span> &
-                <span class="has-text-primary">Share</span> them with the
-                world!!
+                <span class="has-text-primary">Share</span> them with the world
               </h1>
-              <br>
-              <h3>Add links to a list and share it with one simple URL</h3>
-              <br>
-              <h3> Create a list anonymously, or login to save, manage and edit your lists</h3>
             </div>
-
           </div>
           <div class="column is-half is-hidden-mobile">
             <img src="@/assets/banner-logo-large.png" class="banner-image" />

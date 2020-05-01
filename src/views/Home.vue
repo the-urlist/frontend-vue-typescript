@@ -11,8 +11,6 @@
                 <span class="has-text-primary">Share</span> them with the
                 world!!
               </h1>
-
-              // TODO #19 @sana-ajani New Issue 
               <h3>Add links to a list and share it with one simple URL</h3>
               <br>
               <h3> Create a list anonymously, or login to save, manage and edit your lists</h3>

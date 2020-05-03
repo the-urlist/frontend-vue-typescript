@@ -10,6 +10,7 @@
                 <span class="has-text-primary">Save</span> &
                 <span class="has-text-primary">Share</span> them with the world
               </h1>
+              // TODO #31 Add a description please @sana-ajani
             </div>
           </div>
           <div class="column is-half is-hidden-mobile">
@@ -40,8 +41,8 @@ import NewLink from "@/components/NewLink.vue";
 
 @Component({
   components: {
-    NewLink,
-  },
+    NewLink
+  }
 })
 export default class Home extends Vue {
   // event emitted by the AddBar component

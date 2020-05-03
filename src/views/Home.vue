@@ -10,6 +10,7 @@
                 <span class="has-text-primary">Save</span> &
                 <span class="has-text-primary">Share</span> them with the world
               </h1>
+              // TODO #29 @sana-ajani add a site descriptoin here
             </div>
           </div>
           <div class="column is-half is-hidden-mobile">

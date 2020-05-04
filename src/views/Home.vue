@@ -10,17 +10,8 @@
                 <span class="has-text-primary">Save</span> &
                 <span class="has-text-primary">Share</span> them with the world
               </h1>
-              // TODO #33 @sana-ajani Please add a description
             </div>
-            <br />
-            <p>Add links to a list and share it with one simple URL.</p>
-            <br />
-            <p>
-              Create a list anonymously or login to save, manage, and edit your
-              lists.
-            </p>
           </div>
-
           <div class="column is-half is-hidden-mobile">
             <img src="@/assets/banner-logo-large.png" class="banner-image" />
           </div>
@@ -49,8 +40,8 @@ import NewLink from "@/components/NewLink.vue";
 
 @Component({
   components: {
-    NewLink,
-  },
+    NewLink
+  }
 })
 export default class Home extends Vue {
   // event emitted by the AddBar component

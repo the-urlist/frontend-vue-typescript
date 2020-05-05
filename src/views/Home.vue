@@ -11,6 +11,7 @@
                 <span class="has-text-primary">Share</span> them with the world
               </h1>
             </div>
+            // TODO #35 Add site description @sana-ajani
           </div>
           <div class="column is-half is-hidden-mobile">
             <img src="@/assets/banner-logo-large.png" class="banner-image" />

@@ -8,7 +8,7 @@
               <h1 class="is-size-3 has-text-weight-medium">
                 <span class="has-text-primary">Group</span> links,
                 <span class="has-text-primary">Save</span> &
-                <span class="has-text-primary">Share</span> them with the world!
+                <span class="has-text-primary">Share</span> them with the world
               </h1>
               <br />
               <p>Add links to a list and share it with one simple URL.</p>

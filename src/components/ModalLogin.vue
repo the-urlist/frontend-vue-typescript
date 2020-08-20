@@ -55,6 +55,6 @@ export default class ModalLogin extends Vue {
 }
 
 #twitterIcon {
-  margin-right: .2em;
+  margin-right: 8px;
 }
 </style>

@@ -34,7 +34,7 @@
     "bulma": "^0.7.5",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.2",
-    "node-sass": "^4.14.0",
+    "node-sass": "^7.0.0",
     "sass-loader": "^7.1.0",
     "typescript": "~3.4.4",
     "typescript-eslint-parser": "^22.0.0",

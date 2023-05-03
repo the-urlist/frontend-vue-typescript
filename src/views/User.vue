@@ -9,7 +9,7 @@
           class="column is-one-quarter-widescreen is-one-third-desktop is-half-tablet"
         >
           <div class="list-item" @click="addNewList()">
-            <div class="list-placeholder  has-text-centered">
+            <div class="list-placeholder has-text-centered">
               <div class="column has-text-weight-medium">
                 <div>+</div>
                 <span>Create new collection</span>
@@ -59,10 +59,10 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({
   beforeRouteEnter(to, from, next) {
-    next(vm => {
+    next((vm) => {
       vm.$store.dispatch("getUsersLists");
     });
-  }
+  },
 })
 export default class Me extends Vue {
   get usersLists() {

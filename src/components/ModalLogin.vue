@@ -10,23 +10,13 @@
         <img width="100" class="is-pulled-left" src="../assets/logo.svg" />
       </div>
     </div>
-    <!-- <a
-      id="twitterButton"
-      :href="loginUrl"
-      class="button is-large is-fullwidth has-text-white"
-      disabled
-    >
+    <a id="twitterButton" :href="twitterUrl" class="button is-large is-fullwidth has-text-white">
       <span>
         <i id="twitterIcon" class="fab fa-twitter twitter-icon icon"></i>
         <span class="is-size-5 has-text-weight-medium">with Twitter</span>
       </span>
     </a>
-    <br /> -->
-    <p class="has-text-centered">
-      Sign-in is temprorarily disabled due to issues with Twitter login. You can
-      still create new lists and access existing ones. Sign-in will be back
-      soon!
-    </p>
+    <br />
   </modal>
 </template>
 
@@ -44,8 +34,8 @@ import config from "../config";
 export default class ModalLogin extends Vue {
   isActive: boolean = false;
 
-  get loginUrl() {
-    return config.AUTH_URL("github");
+  get twitterUrl() {
+    return config.AUTH_URL("twitter");
   }
 }
 </script>
@@ -55,11 +45,8 @@ export default class ModalLogin extends Vue {
 #twitterButton {
   background-color: #1cabe9;
 }
+
 .icon {
   margin-right: 8px;
-}
-
-#githubButton {
-  background-color: #333;
 }
 </style>

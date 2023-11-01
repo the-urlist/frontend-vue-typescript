@@ -10,23 +10,19 @@
         <img width="100" class="is-pulled-left" src="../assets/logo.svg" />
       </div>
     </div>
-    <!-- <a
-      id="twitterButton"
-      :href="loginUrl"
-      class="button is-large is-fullwidth has-text-white"
-      disabled
-    >
+    <a id="twitterButton" :href="loginUrl" class="button is-large is-fullwidth has-text-white social-button">
       <span>
         <i id="twitterIcon" class="fab fa-twitter twitter-icon icon"></i>
         <span class="is-size-5 has-text-weight-medium">with Twitter</span>
       </span>
     </a>
-    <br /> -->
-    <p class="has-text-centered">
-      Sign-in is temprorarily disabled due to issues with Twitter login. You can
-      still create new lists and access existing ones. Sign-in will be back
-      soon!
-    </p>
+    <a id="facebookButton" :href="facebookUrl" class="button is-large is-fullwidth has-text-white social-button">
+      <span>
+        <i id="facebookIcon" class="fab fa-facebook-f facebook-icon icon"></i>
+        <span class="is-size-5 has-text-weight-medium">with Facebook</span>
+      </span>
+    </a>
+    <br />
   </modal>
 </template>
 
@@ -44,22 +40,32 @@ import config from "../config";
 export default class ModalLogin extends Vue {
   isActive: boolean = false;
 
-  get loginUrl() {
-    return config.AUTH_URL("github");
+  get twitterUrl() {
+    return config.AUTH_URL("twitter");
+  }
+
+  get facebookUrl() {
+    return config.AUTH_URL("facebook");
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.social-button {
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 #twitterButton {
   background-color: #1cabe9;
 }
-.icon {
-  margin-right: 8px;
+
+#facebookButton {
+  background-color: #3b5998;
 }
 
-#githubButton {
-  background-color: #333;
+.icon {
+  margin-right: 8px;
 }
 </style>

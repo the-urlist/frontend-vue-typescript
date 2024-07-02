@@ -10,10 +10,16 @@
         <img width="100" class="is-pulled-left" src="../assets/logo.svg" />
       </div>
     </div>
-    <a id="twitterButton" :href="twitterUrl" class="button is-large is-fullwidth has-text-white">
+    <a id="twitterButton" :href="twitterUrl" class="button is-large is-fullwidth has-text-white login-button">
       <span>
         <i id="twitterIcon" class="fab fa-twitter twitter-icon icon"></i>
         <span class="is-size-5 has-text-weight-medium">with Twitter</span>
+      </span>
+    </a>
+    <a id="facebookButton" :href="facebookUrl" class="button is-large is-fullwidth has-text-white login-button">
+      <span>
+        <i id="facebookIcon" class="fab fa-facebook facebook-icon icon"></i>
+        <span class="is-size-5 has-text-weight-medium">with Facebook</span>
       </span>
     </a>
     <br />
@@ -37,16 +43,24 @@ export default class ModalLogin extends Vue {
   get twitterUrl() {
     return config.AUTH_URL("twitter");
   }
+
+  get facebookUrl() {
+    return config.AUTH_URL("facebook");
+  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 #twitterButton {
   background-color: #1cabe9;
 }
 
-.icon {
-  margin-right: 8px;
+#facebookButton {
+  background-color: #3b5998;
+}
+
+.login-button {
+  margin: 10px 0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 </style>
